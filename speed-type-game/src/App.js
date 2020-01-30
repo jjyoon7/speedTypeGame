@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
 
 function App() {
+  const STARTING_TIME = 5
+
   const [text, setText] = useState("");
-  const [time, setTime] = useState(5);
+  const [time, setTime] = useState(STARTING_TIME);
   const [isTimeRunning, setTimeRunning] = useState(false)
   const [finalCount, setFinalCount] = useState(0)
 
@@ -20,7 +22,7 @@ function App() {
 
   function startGame() {
       setTimeRunning(true)
-      setTime(5)
+      setTime(STARTING_TIME)
       setFinalCount(0)
       setText("")
   }
