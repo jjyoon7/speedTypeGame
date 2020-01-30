@@ -6,6 +6,7 @@ function App() {
   const [isTimeRunning, setTimeRunning] = useState(false)
   const [finalCount, setFinalCount] = useState(0)
 
+
   function handleChange(event) {
     const {value} = event.target;
     setText(value)
@@ -17,16 +18,22 @@ function App() {
     return wordsCount;
   }
 
+  function handleClick() {
+      setTimeRunning(true)
+      setTime(5)
+      setFinalCount(0)
+      setText("")
+  }
+
   useEffect(() => {
-    let timer;
     if(isTimeRunning && time > 0) {
-      let timer = setTimeout(() => {
+      setTimeout(() => {
         setTime(time => time - 1)
       }, 1000)
     } else if(time === 0){
       setTimeRunning(false)
       setFinalCount(calculateWordCount(text))
-      return () => clearTimeout(timer)
+      // return () => clearTimeout(timer)
     }
   }, [time, isTimeRunning])
 
@@ -35,7 +42,7 @@ function App() {
       <h1>speed type game</h1>
       <textarea onChange={handleChange} value={text}/>
       <h4>time remaining: {time}</h4>
-      <button onClick={() => setTimeRunning(true)}>start</button>
+      <button onClick={handleClick}>start</button>
       <h1>word count: {finalCount}</h1>
     </main>
   )
