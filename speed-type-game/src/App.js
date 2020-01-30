@@ -25,7 +25,9 @@ function App() {
       setTime(STARTING_TIME)
       setFinalCount(0)
       setText("")
+      inputRef.current.disabled = false
       inputRef.current.focus()
+      console.log(inputRef)
   }
 
   function endGame() {
