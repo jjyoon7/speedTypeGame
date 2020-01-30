@@ -41,6 +41,7 @@ function useWordGame(startingTime = 5) {
     }
   }, [time, isTimeRunning])
 
+    //could be an array in order for the receiving component to freely change the names
     return {inputRef, isTimeRunning, handleChange, text, time, startGame, finalCount}
 }
 
