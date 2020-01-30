@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 function App() {
   const [text, setText] = useState("");
   const [time, setTime] = useState(10);
+  const [isTimeRunning, setTimeRunning] = useState(false)
 
   function handleChange(event) {
     const {value} = event.target;
@@ -13,6 +14,7 @@ function App() {
     const wordsArr = words.trim().split(" ");
     const wordsCount = wordsArr.filter(word => word !== "").length;
     return wordsCount;
+    setTimeRunning(isTimeRunning => isTimeRunning: true);
   }
 
   useEffect(() => {
@@ -22,9 +24,10 @@ function App() {
         setTime(time => time - 1)
       }, 1000)
     } else {
+      setTimeRunning(false)
       return () => clearTimeout(timer)
     }
-  }, [time])
+  }, [time, isTimeRunning])
   // function setTime() {
   //   setInterval(() => {
   //     time - 1;
@@ -40,7 +43,7 @@ function App() {
       <h1>speed type game</h1>
       <textarea onChange={handleChange} value={text}/>
       <h4>time remaining: {time}</h4>
-      <button onClick={() => console.log(calculateWordCount(text))}>start</button>
+      <button onClick={() => isTimeRunning = true}>start</button>
       {/* <h1>word count {wordsCount}</h1> */}
     </main>
   )
