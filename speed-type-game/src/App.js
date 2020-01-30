@@ -18,7 +18,7 @@ function App() {
     return wordsCount;
   }
 
-  function handleClick() {
+  function startGame() {
       setTimeRunning(true)
       setTime(5)
       setFinalCount(0)
@@ -45,7 +45,7 @@ function App() {
       <h1>speed type game</h1>
       <textarea onChange={handleChange} value={text}/>
       <h4>time remaining: {time}</h4>
-      <button onClick={handleClick}>start</button>
+      <button onClick={startGame}>start</button>
       <h1>word count: {finalCount}</h1>
     </main>
   )
