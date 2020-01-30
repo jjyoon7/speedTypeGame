@@ -25,14 +25,17 @@ function App() {
       setText("")
   }
 
+  function endGame() {
+      setTimeRunning(false)
+      setFinalCount(calculateWordCount(text))
+  }
   useEffect(() => {
     if(isTimeRunning && time > 0) {
       setTimeout(() => {
         setTime(time => time - 1)
       }, 1000)
     } else if(time === 0){
-      setTimeRunning(false)
-      setFinalCount(calculateWordCount(text))
+      endGame()
       // return () => clearTimeout(timer)
     }
   }, [time, isTimeRunning])
