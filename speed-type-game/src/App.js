@@ -32,6 +32,7 @@ function App() {
     setTime(5)
     setWord(0)
     textRef.current.disabled = false
+    textRef.current.focus()
   }
 
   useEffect(() => {
@@ -43,6 +44,7 @@ function App() {
       setIsTimeRunning(false)
       const wordCount = calculateWords(text)
       setWord(wordCount)
+      textRef.current.disabled = true
     }
   }, [isTimeRunning, time])
 
