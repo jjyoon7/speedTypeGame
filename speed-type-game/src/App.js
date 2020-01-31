@@ -3,7 +3,8 @@ import React, {useState, useEffect} from "react"
 function App() {
   const [text, setText] = useState("")
   const [time, setTime] = useState(5)
-  const [isTimerunning, setIsTimeRunning] = useState(false)
+  const [isTimeRunning, setIsTimeRunning] = useState(false)
+
 
   //what needs to happen
   //calculate the words
@@ -19,17 +20,18 @@ function App() {
   }
 
   function startGame() {
-    //count down starts
-    //
+    setIsTimeRunning(true)
   }
 
   useEffect(() => {
-    if(isTimerunning) {
-      setTime(prevTime => prevTime - 1)
-    } else if(isTimerunning === 0) {
+    if(isTimeRunning && time > 0) {
+      setTimeout(() => {
+        setTime(time => time - 1)
+      }, 1000)
+    } else if(isTimeRunning === 0) {
       setIsTimeRunning(false)
     }
-  }, [isTimerunning])
+  }, [isTimeRunning, time])
 
   return (
     <div>
