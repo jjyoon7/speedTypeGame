@@ -23,7 +23,7 @@ function App() {
 
   function calculateWords(text) {
     const workdsArr = text.trim().split(" ")
-    return workdsArr.length
+    return workdsArr.filter(word => word !== "").length
   }
 
   function startGame() {
