@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useRef} from "react"
 
 function App() {
   const [text, setText] = useState("")
   const [time, setTime] = useState(5)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [word, setWord] = useState(0)
+  const textRef = useRef(null)
 
 
   //what needs to happen
@@ -28,6 +29,9 @@ function App() {
   function startGame() {
     setIsTimeRunning(true)
     setText("")
+    setTime(5)
+    setWord(0)
+    textRef.current.disabled = true
   }
 
   useEffect(() => {
@@ -45,8 +49,8 @@ function App() {
   return (
     <div>
       <h1>speed type game</h1>
-      <textarea type="text" value={text} onChange={handleChange}/>
-      <button onClick={startGame}>start</button>
+      <textarea ref={textRef} disabled={true} type="text" value={text} onChange={handleChange}/>
+      <button onClick={startGame} disabled={isTimeRunning}>start</button>
       <h4>time remaining: {time}</h4>
       <h4>word count:{word}</h4>
     </div>
