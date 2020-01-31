@@ -4,6 +4,7 @@ function App() {
   const [text, setText] = useState("")
   const [time, setTime] = useState(5)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
+  const [word, setWord] = useState(0)
 
 
   //what needs to happen
@@ -19,6 +20,11 @@ function App() {
     setText(value)
   }
 
+  function calculateWords(text) {
+    const workdsArr = text.trim().split(" ")
+    return workdsArr.length
+  }
+
   function startGame() {
     setIsTimeRunning(true)
   }
@@ -28,8 +34,10 @@ function App() {
       setTimeout(() => {
         setTime(time => time - 1)
       }, 1000)
-    } else if(isTimeRunning === 0) {
+    } else if(time === 0) {
       setIsTimeRunning(false)
+      const wordCount = calculateWords(text)
+      setWord(wordCount)
     }
   }, [isTimeRunning, time])
 
@@ -39,6 +47,7 @@ function App() {
       <textarea type="text" value={text} onChange={handleChange}/>
       <button onClick={startGame}>start</button>
       <h4>time remaining: {time}</h4>
+      <h4>word count:{word}</h4>
     </div>
   )
 }
