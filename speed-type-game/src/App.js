@@ -35,16 +35,20 @@ function App() {
     textRef.current.focus()
   }
 
+  function endGame() {
+    setIsTimeRunning(false)
+    const wordCount = calculateWords(text)
+    setWord(wordCount)
+    textRef.current.disabled = true
+  }
+
   useEffect(() => {
     if(isTimeRunning && time > 0) {
       setTimeout(() => {
         setTime(time => time - 1)
       }, 1000)
     } else if(time === 0) {
-      setIsTimeRunning(false)
-      const wordCount = calculateWords(text)
-      setWord(wordCount)
-      textRef.current.disabled = true
+      endGame()
     }
   }, [isTimeRunning, time])
 
