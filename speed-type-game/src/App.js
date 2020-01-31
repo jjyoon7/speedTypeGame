@@ -27,6 +27,7 @@ function App() {
 
   function startGame() {
     setIsTimeRunning(true)
+    setText("")
   }
 
   useEffect(() => {
