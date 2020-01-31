@@ -31,7 +31,7 @@ function App() {
     setText("")
     setTime(5)
     setWord(0)
-    textRef.current.disabled = true
+    textRef.current.disabled = false
   }
 
   useEffect(() => {
